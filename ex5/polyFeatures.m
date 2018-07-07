@@ -14,11 +14,9 @@ X_poly = zeros(numel(X), p);
 %               column of X contains the values of X to the p-th power.
 %
 % 
-
-
-
-
-
+for degree = 1:p
+  X_poly(:, degree) = X .^ degree;
+end
 
 % =========================================================================
 
