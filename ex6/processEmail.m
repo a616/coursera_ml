@@ -25,8 +25,8 @@ word_indices = [];
 email_contents = lower(email_contents);
 
 % Strip all HTML
-% Looks for any expression that starts with < and ends with > and replace
-% and does not have any < or > in the tag it with a space
+% Looks for any expression that starts with < and ends with > and does not have 
+% any < or > in the tag and replace it with a space
 email_contents = regexprep(email_contents, '<[^<>]+>', ' ');
 
 % Handle Numbers
@@ -90,20 +90,17 @@ while ~isempty(email_contents)
     %               'action', then, you should add 18 to the word_indices 
     %               vector (e.g., word_indices = [word_indices ; 18]; ).
     % 
-    % Note: vocabList{idx} returns a the word with index idx in the
+    % Note: vocabList{idx} returns cell()the word with index idx in the
     %       vocabulary list.
     % 
     % Note: You can use strcmp(str1, str2) to compare two strings (str1 and
     %       str2). It will return 1 only if the two strings are equivalent.
     %
-
-
-
-
-
-
-
-
+    index = find(strcmp(str, vocabList));
+    
+    if ~isempty(index)
+      word_indices = [word_indices; index];
+    end
 
 
     % =============================================================
