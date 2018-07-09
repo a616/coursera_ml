@@ -25,13 +25,17 @@ centroids = zeros(K, n);
 %
 % Note: You can use a for-loop over the centroids to compute this.
 %
+I = eye(K);
+one_hot_cluster = I(idx, :);
 
+column_count = sum(one_hot_cluster);
+denominator = column_count;
 
+% To avoid divided by zero
+denominator(denominator == 0) == 1;
 
-
-
-
-
+avg_op = bsxfun(@rdivide, one_hot_cluster, denominator)';
+centroids = avg_op * X;
 
 % =============================================================
 
